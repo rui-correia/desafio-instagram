@@ -22,6 +22,7 @@ public class Postagem implements Serializable {
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
+    @OneToMany(mappedBy = "postagem")
     private List<Comentario> comentarios = new ArrayList<>();
 
 }

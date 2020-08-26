@@ -18,6 +18,9 @@ public class Comentario implements Serializable {
     private Usuario usuario;
     private String comentario;
     private LocalDateTime data;
+    @ManyToOne
+    @JoinColumn(name = "id_postagem")
+    private Postagem postagem;
 
 
 
