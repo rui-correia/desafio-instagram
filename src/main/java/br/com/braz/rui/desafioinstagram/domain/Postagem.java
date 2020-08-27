@@ -25,4 +25,64 @@ public class Postagem implements Serializable {
     @OneToMany(mappedBy = "postagem")
     private List<Comentario> comentarios = new ArrayList<>();
 
+    public Postagem(){
+
+    }
+
+    public Postagem(Integer id, String texto, String imagem, LocalDateTime data, Usuario usuario, List<Comentario> comentarios) {
+        this.id = id;
+        this.texto = texto;
+        this.imagem = imagem;
+        this.data = data;
+        this.usuario = usuario;
+        this.comentarios = comentarios;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTexto() {
+        return texto;
+    }
+
+    public void setTexto(String texto) {
+        this.texto = texto;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
+    }
+
+    public LocalDateTime getData() {
+        return data;
+    }
+
+    public void setData(LocalDateTime data) {
+        this.data = data;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
+    }
 }

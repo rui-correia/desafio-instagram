@@ -22,6 +22,55 @@ public class Comentario implements Serializable {
     @JoinColumn(name = "id_postagem")
     private Postagem postagem;
 
+    public Comentario(){
 
+    }
 
+    public Comentario(Integer id, Usuario usuario, String comentario, LocalDateTime data, Postagem postagem) {
+        this.id = id;
+        this.usuario = usuario;
+        this.comentario = comentario;
+        this.data = data;
+        this.postagem = postagem;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
+
+    public LocalDateTime getData() {
+        return data;
+    }
+
+    public void setData(LocalDateTime data) {
+        this.data = data;
+    }
+
+    public Postagem getPostagem() {
+        return postagem;
+    }
+
+    public void setPostagem(Postagem postagem) {
+        this.postagem = postagem;
+    }
 }
