@@ -14,6 +14,49 @@ public class Configuracao implements Serializable {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
+    private String senha;
     private boolean ativo;
 
+    public Configuracao(){
+
+    }
+
+    public Configuracao(Integer id, Usuario usuario, String senha, boolean ativo) {
+        this.id = id;
+        this.usuario = usuario;
+        this.senha = senha;
+        this.ativo = ativo;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
 }
