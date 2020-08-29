@@ -1,13 +1,11 @@
 package br.com.braz.rui.desafioinstagram.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -20,14 +18,19 @@ public class Usuario implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
-    private String numero;
+    private String celular;
+
+    @Column(unique = true)
     private String email;
 
-    //Colecoes
     @JsonIgnore
-    @OneToMany
-    private List<Usuario> amigos = new ArrayList<>();
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY, optional = true)
+    private Conta conta;
 
+    //Colecoes
+
+    @JsonManagedReference
     @OneToMany(mappedBy = "usuario")
     private List<Postagem> postagens = new ArrayList<>();
 
@@ -36,24 +39,26 @@ public class Usuario implements Serializable {
 
     @OneToMany(mappedBy = "usuario")
     private List<Comentario> comentarios = new ArrayList<>();
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL,
-    fetch = FetchType.LAZY, optional = true)
-    private Configuracao configuracao;
 
     public Usuario(){
 
     }
 
-    public Usuario(Integer id, String nome, String numero, String email, Set<String> telefones, List<Usuario> amigos, List<Postagem> postagens, List<Mensagem> mensagens, List<Comentario> comentarios, Configuracao configuracao) {
+    public Usuario(String nome, String celular, String email) {
+        this.nome = nome;
+        this.celular = celular;
+        this.email = email;
+    }
+
+    public Usuario(Integer id, String nome, String celular, String email, Set<String> telefones, List<Usuario> amigos, List<Postagem> postagens, List<Mensagem> mensagens, List<Comentario> comentarios, Conta conta) {
         this.id = id;
         this.nome = nome;
-        this.numero = numero;
+        this.celular = celular;
         this.email = email;
-        this.amigos = amigos;
         this.postagens = postagens;
         this.mensagens = mensagens;
         this.comentarios = comentarios;
-        this.configuracao = configuracao;
+        this.conta = conta;
     }
 
     public Integer getId() {
@@ -72,12 +77,12 @@ public class Usuario implements Serializable {
         this.nome = nome;
     }
 
-    public String getNumero() {
-        return numero;
+    public String getCelular() {
+        return celular;
     }
 
-    public void setNumero(String numero) {
-        this.numero = numero;
+    public void setCelular(String celular) {
+        this.celular = celular;
     }
 
     public String getEmail() {
@@ -86,14 +91,6 @@ public class Usuario implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public List<Usuario> getAmigos() {
-        return amigos;
-    }
-
-    public void setAmigos(List<Usuario> amigos) {
-        this.amigos = amigos;
     }
 
     public List<Postagem> getPostagens() {
@@ -120,11 +117,11 @@ public class Usuario implements Serializable {
         this.comentarios = comentarios;
     }
 
-    public Configuracao getConfiguracao() {
-        return configuracao;
+    public Conta getConta() {
+        return conta;
     }
 
-    public void setConfiguracao(Configuracao configuracao) {
-        this.configuracao = configuracao;
+    public void setConta(Conta conta) {
+        this.conta = conta;
     }
 }
