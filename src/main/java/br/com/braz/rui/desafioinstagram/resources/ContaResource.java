@@ -21,6 +21,7 @@ public class ContaResource {
     @Autowired
     UsuarioService usuarioService;
 
+    //Segue um usuario
     @RequestMapping(value = "/seguir/{idUsuario}", method = RequestMethod.PUT)
     public ResponseEntity<Void> seguir(@RequestBody Integer idConta, @PathVariable Integer idUsuario){
         Usuario usuario = usuarioService.buscar(idUsuario);
@@ -29,12 +30,14 @@ public class ContaResource {
         return ResponseEntity.noContent().build();
     }
 
+    //Cadastra uma nova conta
     @RequestMapping(value = "/cadastrar", method = RequestMethod.POST)
     public ResponseEntity<Void> criarConta(@RequestBody ContaRequest contaRequest){
         contaService.cadastrar(contaRequest.getSenha(), contaRequest.getNome(), contaRequest.getCelular(), contaRequest.getEmail());
         return ResponseEntity.ok().build();
     }
 
+    //Desativa uma conta
     @RequestMapping(value = "/desativar/{idDesativar}", method = RequestMethod.PUT)
     public ResponseEntity<Void> desativar(@PathVariable Integer idDesativar){
         contaService.desativar(idDesativar);

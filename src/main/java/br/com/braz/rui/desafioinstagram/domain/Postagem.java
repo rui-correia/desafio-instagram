@@ -18,6 +18,7 @@ public class Postagem implements Serializable {
     private Integer id;
     private String texto;
     private String imagem;
+    private Integer curtidas;
     private LocalDateTime data;
 
     @JsonBackReference
@@ -87,5 +88,13 @@ public class Postagem implements Serializable {
 
     public void setComentarios(List<Comentario> comentarios) {
         this.comentarios = comentarios;
+    }
+
+    public Integer getCurtidas() {
+        return curtidas;
+    }
+
+    public void setCurtidas(Integer curtidas) {
+        this.curtidas = curtidas;
     }
 }

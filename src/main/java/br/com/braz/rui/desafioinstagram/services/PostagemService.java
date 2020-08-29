@@ -29,6 +29,7 @@ public class PostagemService {
         postagem.setData(LocalDateTime.now());
         postagem.setTexto(texto);
         postagem.setImagem("imagem.jpg");
+        postagem.setCurtidas(0);
         usuario.getPostagens().add(postagem);
 
         postagemRepository.save(postagem);

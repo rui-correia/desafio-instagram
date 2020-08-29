@@ -19,15 +19,15 @@ public class UsuarioResource {
     @Autowired
     private UsuarioService usuarioService;
 
-    @Autowired
-    private PostagemService postagemService;
 
+    //Busca um usuario por ID
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> buscar(@PathVariable Integer id){
         Usuario usuario = usuarioService.buscar(id);
         return ResponseEntity.ok().body(usuario);
     }
 
+    //Mostra quem o usuario está seguindo
     @RequestMapping(value = "/seguindo/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> buscarSeguindo(@PathVariable Integer id){
         Usuario usuario = usuarioService.buscar(id);
@@ -36,6 +36,7 @@ public class UsuarioResource {
         return ResponseEntity.ok().body(seguindo);
     }
 
+    //Exibe os seguidores de determinado usuário
     @RequestMapping(value = "/seguidores/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> buscarSeguidores(@PathVariable Integer id){
         Usuario usuario = usuarioService.buscar(id);
@@ -43,14 +44,5 @@ public class UsuarioResource {
         seguidores = usuario.getConta().getSeguidores();
         return ResponseEntity.ok().body(seguidores);
     }
-
-    @RequestMapping(value = "/postar", method = RequestMethod.POST)
-    public ResponseEntity<?> postar(@RequestBody PostagemRequest postagemRequest){
-        postagemService.postar(postagemRequest.getIdUsuarioLogado(), postagemRequest.getTexto(), postagemRequest.getImagem());
-        return ResponseEntity.ok().build();
-    }
-
-
-
 
 }
