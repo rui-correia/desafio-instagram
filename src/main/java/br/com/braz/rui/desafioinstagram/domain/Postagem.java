@@ -1,5 +1,7 @@
 package br.com.braz.rui.desafioinstagram.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -16,8 +18,10 @@ public class Postagem implements Serializable {
     private Integer id;
     private String texto;
     private String imagem;
+    private Integer curtidas;
     private LocalDateTime data;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
@@ -84,5 +88,13 @@ public class Postagem implements Serializable {
 
     public void setComentarios(List<Comentario> comentarios) {
         this.comentarios = comentarios;
+    }
+
+    public Integer getCurtidas() {
+        return curtidas;
+    }
+
+    public void setCurtidas(Integer curtidas) {
+        this.curtidas = curtidas;
     }
 }
