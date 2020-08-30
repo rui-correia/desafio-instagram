@@ -13,3 +13,10 @@ Obs.: Está configurado para rodar na porta 8081, caso necessario, alterar no ar
 5. Foi realizada uma carga inicial de Usuário e conta.
 6. Pela regra definida, não é possivel existir um usuário sem uma conta ou vice-versa.
 
+# TODO
+
+1. Repositorio de imagens
+2. Implementar JWT
+3. Validações
+4. Mensagens diretas.
+5. "Curtir" Postagens, comentarios e mensagens diretas.
