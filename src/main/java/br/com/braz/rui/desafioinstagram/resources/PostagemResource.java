@@ -36,5 +36,12 @@ public class PostagemResource {
         return ResponseEntity.ok().build();
     }
 
+    //Exclui uma postagem
+    @RequestMapping(value = "/excluir", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> excluirPost(@RequestBody Integer idPostagem, @RequestBody Integer idUsuarioLogado){
+        postagemService.excluirPostagem(idPostagem,idUsuarioLogado);
+        return ResponseEntity.ok().build();
+    }
+
 
 }

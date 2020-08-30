@@ -27,6 +27,14 @@ public class UsuarioResource {
         return ResponseEntity.ok().body(usuario);
     }
 
+    //Busca usuarios pelo nome
+    @RequestMapping(value = "/buscar/{nome}", method = RequestMethod.GET)
+    public ResponseEntity<?> buscarUsuarios(@PathVariable String nome){
+        List<Usuario> usuarios = usuarioService.buscarUsuarios(nome);
+        return ResponseEntity.ok().body(usuarios);
+    }
+
+
     //Mostra quem o usuario está seguindo
     @RequestMapping(value = "/seguindo/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> buscarSeguindo(@PathVariable Integer id){

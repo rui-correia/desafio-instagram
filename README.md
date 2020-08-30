@@ -9,3 +9,7 @@ Foi criada uma aplicação com o back-end em Spring. Para persistir os dados foi
 Obs.: Está configurado para rodar na porta 8081, caso necessario, alterar no arquivo: application.properties no diretório src/main/resources
 2. Rodar a aplicação DesafioInstagramApplication. 
 3. Abrir no navegador http://localhost:8081/swagger-ui.html para testar as operações.
+4. O projeto está configurado para rodar com um banco de dados de testes (H2), não será necessário criar nenhum outro banco.
+5. Foi realizada uma carga inicial de Usuário e conta.
+6. Pela regra definida, não é possivel existir um usuário sem uma conta ou vice-versa.
+

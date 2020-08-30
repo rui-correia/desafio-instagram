@@ -2,14 +2,17 @@ package br.com.braz.rui.desafioinstagram.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.intellij.lang.annotations.Pattern;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 @Entity
+@NamedQuery(name = "Usuario.findByName", query = "SELECT u FROM Usuario u WHERE lower(u.nome) like CONCAT('%', CONCAT(lower(:nome), '%'))")
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -18,6 +21,8 @@ public class Usuario implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
+
+
     private String celular;
 
     @Column(unique = true)
