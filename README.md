@@ -1,7 +1,8 @@
 # Desafio-Instagram
 
 
-Foi criada uma aplicação com o back-end em Spring. Para persistir os dados foi utilizando bancod e dados MySql. Para gerenciador de dependencias foi utilizado o Maven. Foi utilizado o Swagger para facilitar as operaçoes.
+Foi criada uma aplicação com o back-end em Spring. Para persistir os dados foi utilizado banco de dados de testes(h2). 
+Para gerenciador de dependencias foi utilizado o Maven. Foi utilizado o Swagger para facilitar as operaçoes.
 
 # Executando o projeto
 
